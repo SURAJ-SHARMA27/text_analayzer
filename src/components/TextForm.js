@@ -76,26 +76,27 @@ export default function TextForm(props) {
  
   <textarea className="form-control area" style={{backgroundColor:props.mode==='dark'?'rgb(75, 71, 71)':'white',color:props.mode==='dark'?'white':'black' ,fontStyle:ita1, fontWeight:bold}}  value={text} onChange={handleOnChange} id="txt" rows="8"></textarea>
 </div>
-<div className="container col-12 " >
-        <button className="btn btn-primary mx-2" onClick={handleUpClick}
+<div className="container  col-sm-12 " >
+  
+  
+        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}
         >convert to uppercase
         
         </button>
-             <button className="btn btn-warning mx-2" onClick={handleLoClick}
+             <button className="btn btn-warning mx-2 my-2" onClick={handleLoClick}
         >convert to lowercase</button>
-          <button className="btn btn-danger mx-2" onClick={handleClClick}
+          <button className="btn btn-danger mx-2 my-2" onClick={handleClClick}
         >clear text</button>
        
-        <button className="btn btn-info mx-2" onClick={handleCopy}
+        <button className="btn btn-info mx-2 my-2" onClick={handleCopy}
         >Copy</button>
-             <button className="btn btn-success mx-2" onClick={handlebold}
+             <button className="btn btn-success mx-2 my-2" onClick={handlebold}
         >Bold</button>
-         <button className="btn btn-dark mx -2" onClick={handleita}
+         <button className="btn btn-dark mx -2 my-2" onClick={handleita}
         >Italic</button>
-        <button className="btn btn-secondary mx-2" onClick={handleremove}
+        <button className="btn btn-secondary mx-2 my-2" onClick={handleremove}
         >Remove space</button>
         </div>
-        
     
         <div className="container my-4">
           <h4 id="top">Your text summary</h4>
