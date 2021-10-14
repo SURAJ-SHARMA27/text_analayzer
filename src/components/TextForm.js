@@ -95,7 +95,7 @@ export default function TextForm(props) {
          <button className="btn btn-dark mx -2 my-2" onClick={handleita}
         >Italic</button>
         <button className="btn btn-secondary mx-2 my-2" onClick={handleremove}
-        >Remove space</button>
+        >Remove Space</button>
         </div>
     
         <div className="container my-4">
