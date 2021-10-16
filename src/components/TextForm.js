@@ -28,6 +28,7 @@ export default function TextForm(props) {
     var text=document.getElementById("txt")
     text.select();
     navigator.clipboard.writeText(text.value);
+    document.getSelection().removeAllRanges();
     props.showAlert("Copied to clipboard","success");
   }
   const handlebold=()=>{
@@ -66,6 +67,16 @@ export default function TextForm(props) {
   } 
 
     const [text,setText]=useState('');
+ 
+ 
+    let i=0,count=0;
+    let run;
+    for(i=0;i<text.length;i++){
+      if(text[i]==" "){
+count++;
+      }
+    }
+    run=text.length-count;
     return (
       <>
       
@@ -74,34 +85,37 @@ export default function TextForm(props) {
 <div className="mb-3">
   
  
-  <textarea className="form-control area" style={{backgroundColor:props.mode==='dark'?'rgb(75, 71, 71)':'white',color:props.mode==='dark'?'white':'black' ,fontStyle:ita1, fontWeight:bold}}  value={text} onChange={handleOnChange} id="txt" rows="8"></textarea>
+  <textarea className="form-control area" style={{backgroundColor:props.mode==='dark'?'#13466E':'white',color:props.mode==='dark'?'white':'black' ,fontStyle:ita1, fontWeight:bold}}  value={text} onChange={handleOnChange} id="txt" rows="8"></textarea>
 </div>
 <div className="container  col-sm-12 " >
   
   
-        <button className="btn btn-primary mx-2 my-2" onClick={handleUpClick}
+        <button disabled={text.length===0} className="btn btn-primary mx-2 my-2" onClick={handleUpClick}
         >convert to uppercase
         
         </button>
-             <button className="btn btn-warning mx-2 my-2" onClick={handleLoClick}
+             <button disabled={text.length===0} className="btn btn-warning mx-2 my-2" onClick={handleLoClick}
         >convert to lowercase</button>
-          <button className="btn btn-danger mx-2 my-2" onClick={handleClClick}
+          <button disabled={text.length===0} className="btn btn-danger mx-2 my-2" onClick={handleClClick}
         >clear text</button>
        
-        <button className="btn btn-info mx-2 my-2" onClick={handleCopy}
+        <button disabled={text.length===0} className="btn btn-info mx-2 my-2" onClick={handleCopy}
         >Copy</button>
-             <button className="btn btn-success mx-2 my-2" onClick={handlebold}
+             <button disabled={text.length===0}className="btn btn-success mx-2 my-2" onClick={handlebold}
         >Bold</button>
-         <button className="btn btn-dark mx -2 my-2" onClick={handleita}
+         <button disabled={text.length===0}className="btn btn-dark mx -2 my-2" onClick={handleita}
         >Italic</button>
-        <button className="btn btn-secondary mx-2 my-2" onClick={handleremove}
+        <button disabled={text.length===0} className="btn btn-secondary mx-2 my-2" onClick={handleremove}
         >Remove Space</button>
         </div>
     
         <div className="container my-4">
+          
           <h4 id="top">Your text summary</h4>
-          <p id="white" style={{color:props.mode==='dark'?'white':'black'}}> {text.split(" ").length} words and {text.length} characters</p>
-          <p id="white" style={{color:props.mode==='dark'?'white':'black'}}>{0.008* text.split(" ").length} minutes read</p>
+          
+          
+          <p id="white" style={{color:props.mode==='dark'?'white':'black'}}> {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {run} characters</p>
+          <p id="white" style={{color:props.mode==='dark'?'white':'black'}}>{0.008* text.split(" ").filter((element)=>{return element.length!==0}).length} minutes read</p>
           
       
   <h4 id="top">Preview</h4>
